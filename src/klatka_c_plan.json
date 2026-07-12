@@ -1,0 +1,286 @@
+{
+  "schemaVersion": "1.0.0",
+  "plan": {
+    "id": "chest-c-upper-chest-isolation",
+    "name": "KLATKA C",
+    "nameEn": "CHEST C",
+    "category": "chest",
+    "goal": "Góra klatki, rozciągnięcie i izolacja",
+    "priority": "high",
+    "emphasis": [
+      "górna część klatki piersiowej",
+      "pełne rozciągnięcie",
+      "kontrola ruchu i czucie mięśniowe"
+    ],
+    "estimatedDurationMin": 70,
+    "defaultRestSeconds": {
+      "compound": 135,
+      "isolation": 75,
+      "finisher": 45
+    },
+    "notes": [
+      "To jednostka ukierunkowana na górę klatki i dokładne czucie ruchu.",
+      "W pierwszych ćwiczeniach zostaw zwykle 1–2 RIR.",
+      "W końcowych izolacjach możesz schodzić do 0–1 RIR.",
+      "Na różnych bramach ciężary mogą być zupełnie inne — dobieraj je według realnego czucia, nie ego."
+    ],
+    "exercises": [
+      {
+        "order": 1,
+        "id": "incline-hammer-strength-press",
+        "namePl": "Wyciskanie na Hammer Strength skos dodatni",
+        "nameEn": "Incline Hammer Strength Press",
+        "category": "compound",
+        "equipment": [
+          "maszyna Hammer Strength / converging press"
+        ],
+        "primaryMuscles": [
+          "górna część klatki piersiowej"
+        ],
+        "secondaryMuscles": [
+          "triceps",
+          "przedni akton barków"
+        ],
+        "sets": 4,
+        "repRange": {
+          "min": 8,
+          "max": 12
+        },
+        "targetRir": "1–2",
+        "restSeconds": 135,
+        "tempo": "3-0-1-1",
+        "instructions": [
+          "Ustaw siedzisko tak, aby uchwyty startowały w linii górnej części klatki.",
+          "Ściągnij łopatki i utrzymuj stabilny kontakt pleców z oparciem.",
+          "Wyciskaj uchwyty po naturalnym łuku do przodu i lekko ku sobie.",
+          "Wracaj powoli do pełnego rozciągnięcia bez odbijania ciężaru."
+        ],
+        "commonMistakes": [
+          "Ustawienie siedziska za nisko lub za wysoko.",
+          "Wysuwanie barków do przodu.",
+          "Zbyt krótki zakres ruchu.",
+          "Zbyt szybkie opuszczanie ciężaru."
+        ],
+        "coachCues": [
+          "Prowadź łokcie lekko pod linią barków.",
+          "Myśl o dociśnięciu górnej części klatki do uchwytów."
+        ],
+        "imageUrl": "/images/exercises/incline-hammer-strength-press.webp"
+      },
+      {
+        "order": 2,
+        "id": "low-to-high-cable-fly",
+        "namePl": "Rozpiętki na linkach z dołu do góry",
+        "nameEn": "Low-to-High Cable Fly",
+        "category": "isolation",
+        "equipment": [
+          "brama",
+          "uchwyty pojedyncze"
+        ],
+        "primaryMuscles": [
+          "górna część klatki piersiowej"
+        ],
+        "secondaryMuscles": [
+          "przedni akton barków"
+        ],
+        "sets": 4,
+        "repRange": {
+          "min": 10,
+          "max": 15
+        },
+        "targetRir": "1",
+        "restSeconds": 75,
+        "tempo": "3-1-1-2",
+        "instructions": [
+          "Ustaw bloczki nisko, mniej więcej przy kostkach lub łydkach.",
+          "Stań lekko wysunięty przed bramę i utrzymuj delikatne pochylenie tułowia.",
+          "Prowadź dłonie po łuku z dołu ku górze i do środka, celując w okolice górnej klatki.",
+          "Na końcu ruchu mocno dopnij górę klatki i wróć powoli do rozciągnięcia."
+        ],
+        "commonMistakes": [
+          "Zbyt duże obciążenie i zamiana ruchu w wyciskanie.",
+          "Prostowanie i zginanie łokci w trakcie ruchu.",
+          "Kończenie ruchu za nisko.",
+          "Unoszenie barków."
+        ],
+        "coachCues": [
+          "Myśl o prowadzeniu łokci po szerokim łuku do góry.",
+          "Na górze zatrzymaj napięcie na 1–2 sekundy."
+        ],
+        "imageUrl": "/images/exercises/low-to-high-cable-fly.webp"
+      },
+      {
+        "order": 3,
+        "id": "incline-cable-press",
+        "namePl": "Wyciskanie na linkach skos dodatni",
+        "nameEn": "Incline Cable Press",
+        "category": "compound",
+        "equipment": [
+          "brama",
+          "uchwyty pojedyncze",
+          "ławka regulowana"
+        ],
+        "primaryMuscles": [
+          "górna część klatki piersiowej"
+        ],
+        "secondaryMuscles": [
+          "triceps",
+          "przedni akton barków"
+        ],
+        "sets": 3,
+        "repRange": {
+          "min": 8,
+          "max": 12
+        },
+        "targetRir": "1–2",
+        "restSeconds": 105,
+        "tempo": "3-0-1-1",
+        "instructions": [
+          "Ustaw ławkę na niewielkim skosie dodatnim między słupkami bramy.",
+          "Ustaw bloczki nisko, aby tor ruchu szedł z dołu do góry.",
+          "Wyciskaj uchwyty nad linię górnej klatki, zachowując stałe napięcie linek.",
+          "Nie pozwalaj, aby barki wysuwały się do przodu w dolnej fazie."
+        ],
+        "commonMistakes": [
+          "Za duży kąt ławki i nadmierna praca barków.",
+          "Zbyt szybkie tempo.",
+          "Brak pełnego rozciągnięcia.",
+          "Zderzanie uchwytów na górze."
+        ],
+        "coachCues": [
+          "Myśl o wypychaniu dłoni ku górze i do środka.",
+          "Trzymaj klatkę wysoko przez cały ruch."
+        ],
+        "imageUrl": "/images/exercises/incline-cable-press.webp"
+      },
+      {
+        "order": 4,
+        "id": "machine-chest-press-upper-focus",
+        "namePl": "Wyciskanie na maszynie – akcent góry klatki",
+        "nameEn": "Machine Chest Press - Upper Focus",
+        "category": "compound",
+        "equipment": [
+          "maszyna chest press"
+        ],
+        "primaryMuscles": [
+          "górna i środkowa część klatki piersiowej"
+        ],
+        "secondaryMuscles": [
+          "triceps",
+          "przedni akton barków"
+        ],
+        "sets": 3,
+        "repRange": {
+          "min": 10,
+          "max": 14
+        },
+        "targetRir": "1",
+        "restSeconds": 90,
+        "tempo": "3-0-1-1",
+        "instructions": [
+          "Ustaw siedzisko tak, aby tor ruchu delikatnie trafiał wyżej w klatkę.",
+          "Dociśnij łopatki do oparcia i trzymaj mostek uniesiony.",
+          "Wyciskaj płynnie, koncentrując się na spięciu klatki, nie barków.",
+          "Opuszczaj ciężar wolno do pełnego rozciągnięcia."
+        ],
+        "commonMistakes": [
+          "Wypychanie barków do przodu.",
+          "Nadmierne blokowanie łokci.",
+          "Za duży ciężar i skracanie zakresu.",
+          "Brak kontroli ekscentryki."
+        ],
+        "coachCues": [
+          "Wyobraź sobie, że łokcie schodzą w dół i lekko na zewnątrz.",
+          "W końcówce ruchu dopnij klatkę, a nie triceps."
+        ],
+        "imageUrl": "/images/exercises/machine-chest-press-upper-focus.webp"
+      },
+      {
+        "order": 5,
+        "id": "stretch-push-up",
+        "namePl": "Pompki rozciągające na podwyższeniu",
+        "nameEn": "Stretch Push-Up",
+        "category": "finisher",
+        "equipment": [
+          "masa ciała",
+          "uchwyty / hantle / podwyższenie"
+        ],
+        "primaryMuscles": [
+          "klatka piersiowa"
+        ],
+        "secondaryMuscles": [
+          "triceps",
+          "przedni akton barków"
+        ],
+        "sets": 3,
+        "repRange": {
+          "min": 8,
+          "max": 20
+        },
+        "targetRir": "0–1",
+        "restSeconds": 45,
+        "tempo": "4-1-1-0",
+        "instructions": [
+          "Ustaw dłonie na uchwytach, hantlach lub dwóch podwyższeniach, aby zwiększyć zakres ruchu.",
+          "Utrzymuj ciało w jednej linii od głowy do pięt.",
+          "Opuszczaj klatkę głębiej niż w klasycznej pompce, czując rozciągnięcie.",
+          "Wypchnij się do góry bez utraty napięcia tułowia."
+        ],
+        "commonMistakes": [
+          "Opadanie bioder.",
+          "Schodzenie bez kontroli do zbyt dużej głębokości.",
+          "Wysuwanie głowy do przodu.",
+          "Kończenie serii po utracie techniki."
+        ],
+        "coachCues": [
+          "Zejdź wolno w dół i poczuj rozciągnięcie klatki.",
+          "W górze nie odpoczywaj — utrzymaj aktywną pozycję."
+        ],
+        "imageUrl": "/images/exercises/stretch-push-up.webp"
+      },
+      {
+        "order": 6,
+        "id": "chest-squeeze-isometric",
+        "namePl": "Izometryczne spięcie klatki",
+        "nameEn": "Chest Squeeze Isometric",
+        "category": "finisher",
+        "equipment": [
+          "talerz",
+          "hantel lub brak sprzętu"
+        ],
+        "primaryMuscles": [
+          "klatka piersiowa"
+        ],
+        "secondaryMuscles": [
+          "przedni akton barków"
+        ],
+        "sets": 3,
+        "repRange": {
+          "min": 20,
+          "max": 40
+        },
+        "repUnit": "sekundy",
+        "targetRir": "maksymalne napięcie techniczne",
+        "restSeconds": 45,
+        "tempo": "izometria",
+        "instructions": [
+          "Dociśnij dłonie, talerz lub hantle do siebie na wysokości środka lub górnej części klatki.",
+          "Utrzymuj łokcie lekko uniesione i barki opuszczone.",
+          "Napnij klatkę maksymalnie przez cały czas trwania serii.",
+          "Oddychaj spokojnie i nie rozluźniaj nacisku."
+        ],
+        "commonMistakes": [
+          "Przenoszenie napięcia na barki i szyję.",
+          "Zbyt niskie ustawienie dłoni.",
+          "Rozluźnianie nacisku w połowie serii.",
+          "Wstrzymywanie oddechu przez całą serię."
+        ],
+        "coachCues": [
+          "Wyobraź sobie, że chcesz zgnieść przedmiot między dłońmi.",
+          "Najmocniej dopnij klatkę przez ostatnie 10 sekund."
+        ],
+        "imageUrl": "/images/exercises/chest-squeeze-isometric.webp"
+      }
+    ]
+  }
+}

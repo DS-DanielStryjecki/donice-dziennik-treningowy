@@ -1,7 +1,9 @@
 import type {Exercise,TrainingTemplate} from './types';
 import chestBSource from './klatka_b_plan.json';
+import chestCSource from './klatka_c_plan.json';
 const ex=(id:string,namePl:string,nameEn:string,muscles:Exercise['muscles'],equipment:string,tip?:string,alternatives:string[]=[],imageUrl?:string):Exercise=>({id,namePl,nameEn,muscles,equipment,tip:tip||'Kontroluj fazę opuszczania i dobierz ciężar pozwalający utrzymać pełny, bezbolesny zakres.',alternatives,imageUrl,illustrationStart:`/exercise-art/${id}-start.webp`,illustrationEnd:`/exercise-art/${id}-end.webp`,steps:['Ustaw stabilną pozycję i napnij brzuch.','Rozpocznij ruch z kontrolowanym napięciem mięśni docelowych.','Wykonaj pełny, bezbolesny zakres bez szarpania.','Wróć wolniej do pozycji początkowej i zachowaj napięcie.'],errors:['Zbyt duży ciężar i skrócony zakres ruchu','Szarpanie ciężarem lub utrata stabilnej pozycji','Ignorowanie bólu stawowego']});
 const chestBExercises:Exercise[]=chestBSource.plan.exercises.map(item=>({id:item.id,namePl:item.namePl,nameEn:item.nameEn,muscles:['Klatka'],equipment:item.equipment.join(', '),steps:item.instructions,errors:item.commonMistakes,tip:item.coachCues[0],coachCues:item.coachCues,imageUrl:item.imageUrl,sets:item.sets,repRange:item.repRange,targetRir:item.targetRir,restSeconds:item.restSeconds,tempo:item.tempo,category:item.category,primaryMuscles:item.primaryMuscles,secondaryMuscles:item.secondaryMuscles}));
+const chestCExercises:Exercise[]=chestCSource.plan.exercises.map(item=>({id:item.id,namePl:item.namePl,nameEn:item.nameEn,muscles:['Klatka'],equipment:item.equipment.join(', '),steps:item.instructions,errors:item.commonMistakes,tip:item.coachCues[0],coachCues:item.coachCues,imageUrl:item.imageUrl,sets:item.sets,repRange:item.repRange,repUnit:'repUnit'in item?item.repUnit:undefined,targetRir:item.targetRir,restSeconds:item.restSeconds,tempo:item.tempo,category:item.category,primaryMuscles:item.primaryMuscles,secondaryMuscles:item.secondaryMuscles}));
 export const exercises:Exercise[]=[
  ex('bench','Wyciskanie sztangi leżąc','Barbell Bench Press',['Klatka','Ramiona'],'Sztanga, ławka'),
  ex('incline-db','Wyciskanie hantli na skosie','Incline Dumbbell Press',['Klatka','Barki'],'Hantle, ławka'),
@@ -40,12 +42,13 @@ export const exercises:Exercise[]=[
  ex('shoulder-mobility','Lekka mobilizacja obręczy barkowej','Light Shoulder-Girdle Mobility',['Regeneracja','Barki'],'Guma opcjonalnie'),
  ex('stretching','Łagodne rozciąganie','Gentle Stretching',['Regeneracja'],'Mata'),
  ex('sleep-hydration','Sen i nawodnienie','Sleep and Hydration',['Regeneracja'],'Bez sprzętu'),
- ...chestBExercises
+ ...chestBExercises,
+ ...chestCExercises
 ];
 export const templates:TrainingTemplate[]=[
  {id:'chest-a',name:'KLATKA A',focus:'Klatka',variant:'A',description:'Ciężka · progresja siłowa',exerciseIds:['bench','incline-db','cable-fly']},
  {id:chestBSource.plan.id,name:chestBSource.plan.name,nameEn:chestBSource.plan.nameEn,focus:'Klatka',variant:'B',description:chestBSource.plan.goal,goal:chestBSource.plan.goal,notes:chestBSource.plan.notes,estimatedDurationMin:chestBSource.plan.estimatedDurationMin,sourceSchemaVersion:chestBSource.schemaVersion,exerciseIds:chestBSource.plan.exercises.sort((a,b)=>a.order-b.order).map(item=>item.id)},
- {id:'chest-c',name:'KLATKA C',focus:'Klatka',variant:'C',description:'Góra klatki · izolacja',exerciseIds:['incline-db','low-high','pec-deck']},
+ {id:chestCSource.plan.id,name:chestCSource.plan.name,nameEn:chestCSource.plan.nameEn,focus:'Klatka',variant:'C',description:chestCSource.plan.goal,goal:chestCSource.plan.goal,notes:chestCSource.plan.notes,estimatedDurationMin:chestCSource.plan.estimatedDurationMin,sourceSchemaVersion:chestCSource.schemaVersion,exerciseIds:[...chestCSource.plan.exercises].sort((a,b)=>a.order-b.order).map(item=>item.id)},
  {id:'chest-d',name:'KLATKA D',focus:'Klatka',variant:'D',description:'Pompa · dopalenie · intensyfikacja',exerciseIds:['chest-press','pec-deck','pushup']},
  {id:'shoulders-a',name:'BARKI A',focus:'Barki',variant:'A',description:'Ciężar i masa',exerciseIds:['db-shoulder-press','machine-shoulder-press','db-lateral','reverse-pec','cable-lateral'],optionalIds:['lateral-finisher']},
  {id:'shoulders-b',name:'BARKI B',focus:'Barki',variant:'B',description:'Objętość i kompletna praca wszystkich aktonów',exerciseIds:['arnold','seated-lateral','rear-delt','front-raise','machine-lateral','lateral-finisher']},
