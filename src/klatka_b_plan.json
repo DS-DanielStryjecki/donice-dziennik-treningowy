@@ -1,0 +1,284 @@
+{
+  "schemaVersion": "1.0.0",
+  "plan": {
+    "id": "chest-b-hypertrophy-cables",
+    "name": "KLATKA B",
+    "nameEn": "CHEST B",
+    "category": "chest",
+    "goal": "Hipertrofia i objętość z większym udziałem linek",
+    "priority": "high",
+    "emphasis": [
+      "cała klatka piersiowa",
+      "dolna część klatki",
+      "stałe napięcie mięśniowe"
+    ],
+    "estimatedDurationMin": 70,
+    "defaultRestSeconds": {
+      "compound": 150,
+      "isolation": 75,
+      "finisher": 45
+    },
+    "notes": [
+      "Nie wykonuj każdej serii do upadku.",
+      "W ćwiczeniach wielostawowych pozostaw zwykle 1–2 RIR.",
+      "W ostatniej serii izolacji można zejść do 0–1 RIR.",
+      "Ciężary na różnych bramach mogą znacząco się różnić."
+    ],
+    "exercises": [
+      {
+        "order": 1,
+        "id": "incline-dumbbell-press",
+        "namePl": "Wyciskanie hantli na ławce dodatniej",
+        "nameEn": "Incline Dumbbell Press",
+        "category": "compound",
+        "equipment": [
+          "hantle",
+          "ławka regulowana"
+        ],
+        "primaryMuscles": [
+          "górna część klatki piersiowej"
+        ],
+        "secondaryMuscles": [
+          "triceps",
+          "przedni akton barków"
+        ],
+        "sets": 4,
+        "repRange": {
+          "min": 8,
+          "max": 12
+        },
+        "targetRir": "1–2",
+        "restSeconds": 150,
+        "tempo": "3-0-1-0",
+        "instructions": [
+          "Ustaw ławkę pod kątem około 20–30 stopni.",
+          "Ściągnij łopatki i utrzymuj klatkę uniesioną.",
+          "Opuść hantle kontrolowanie do boków górnej części klatki.",
+          "Wyciskaj hantle w górę bez agresywnego zderzania ich ze sobą."
+        ],
+        "commonMistakes": [
+          "Zbyt duży kąt ławki i przejmowanie ruchu przez barki.",
+          "Odrywanie pośladków od ławki.",
+          "Zbyt szerokie prowadzenie łokci.",
+          "Skracanie fazy opuszczania."
+        ],
+        "coachCues": [
+          "Łokcie lekko pod linią barków.",
+          "Myśl o zbliżaniu bicepsów do środka klatki."
+        ],
+        "imageUrl": "/images/exercises/incline-dumbbell-press.webp"
+      },
+      {
+        "order": 2,
+        "id": "flat-machine-chest-press",
+        "namePl": "Wyciskanie na maszynie poziomej",
+        "nameEn": "Flat Machine Chest Press",
+        "category": "compound",
+        "equipment": [
+          "maszyna chest press"
+        ],
+        "primaryMuscles": [
+          "środkowa część klatki piersiowej"
+        ],
+        "secondaryMuscles": [
+          "triceps",
+          "przedni akton barków"
+        ],
+        "sets": 4,
+        "repRange": {
+          "min": 10,
+          "max": 15
+        },
+        "targetRir": "1–2",
+        "restSeconds": 120,
+        "tempo": "3-0-1-1",
+        "instructions": [
+          "Ustaw siedzisko tak, aby uchwyty znajdowały się na wysokości środka klatki.",
+          "Dociśnij plecy do oparcia i ściągnij łopatki.",
+          "Wyciskaj uchwyty do przodu bez blokowania łokci.",
+          "Wracaj powoli do pełnego, kontrolowanego rozciągnięcia."
+        ],
+        "commonMistakes": [
+          "Ustawienie uchwytów zbyt wysoko.",
+          "Wysuwanie barków do przodu.",
+          "Odbijanie ciężaru w dolnej fazie.",
+          "Pełne blokowanie łokci."
+        ],
+        "coachCues": [
+          "Prowadź łokcie lekko w dół.",
+          "Zatrzymaj ruch na sekundę w maksymalnym spięciu."
+        ],
+        "imageUrl": "/images/exercises/flat-machine-chest-press.webp"
+      },
+      {
+        "order": 3,
+        "id": "pec-deck-fly",
+        "namePl": "Rozpiętki na maszynie Pec Deck",
+        "nameEn": "Pec Deck Fly",
+        "category": "isolation",
+        "equipment": [
+          "pec deck"
+        ],
+        "primaryMuscles": [
+          "klatka piersiowa"
+        ],
+        "secondaryMuscles": [
+          "przedni akton barków"
+        ],
+        "sets": 3,
+        "repRange": {
+          "min": 12,
+          "max": 15
+        },
+        "targetRir": "1",
+        "restSeconds": 75,
+        "tempo": "3-1-1-2",
+        "instructions": [
+          "Ustaw siedzisko tak, aby łokcie były mniej więcej na wysokości środka klatki.",
+          "Utrzymuj lekko ugięte łokcie i nieruchomy tułów.",
+          "Złącz ramiona przed sobą, napinając klatkę.",
+          "Wróć powoli do pozycji rozciągnięcia bez tracenia kontroli."
+        ],
+        "commonMistakes": [
+          "Zbyt głębokie rozciąganie kosztem barków.",
+          "Szarpanie tułowiem.",
+          "Zmiana kąta w łokciach w trakcie ruchu.",
+          "Brak zatrzymania w spięciu."
+        ],
+        "coachCues": [
+          "Nie ściskaj uchwytów zbyt mocno.",
+          "Pomyśl o prowadzeniu łokci ku sobie."
+        ],
+        "imageUrl": "/images/exercises/pec-deck-fly.webp"
+      },
+      {
+        "order": 4,
+        "id": "decline-cable-press",
+        "namePl": "Wyciskanie na linkach z góry w dół",
+        "nameEn": "Decline Cable Press",
+        "category": "compound",
+        "equipment": [
+          "brama",
+          "uchwyty pojedyncze"
+        ],
+        "primaryMuscles": [
+          "dolna część klatki piersiowej"
+        ],
+        "secondaryMuscles": [
+          "triceps",
+          "przedni akton barków"
+        ],
+        "sets": 3,
+        "repRange": {
+          "min": 10,
+          "max": 15
+        },
+        "targetRir": "1–2",
+        "restSeconds": 90,
+        "tempo": "3-0-1-1",
+        "instructions": [
+          "Ustaw bloczki nieco powyżej wysokości barków.",
+          "Stań krok przed bramą i pochyl tułów lekko do przodu.",
+          "Prowadź dłonie po łuku w dół i do przodu.",
+          "Zakończ ruch przed dolną częścią klatki lub nad linią pasa."
+        ],
+        "commonMistakes": [
+          "Zamiana ćwiczenia w prostowanie ramion na triceps.",
+          "Zbyt duże pochylenie tułowia.",
+          "Unoszenie barków.",
+          "Brak kontroli podczas powrotu."
+        ],
+        "coachCues": [
+          "Łokcie poruszają się razem z dłońmi.",
+          "Prowadź uchwyty w dół i do środka, nie pionowo."
+        ],
+        "imageUrl": "/images/exercises/decline-cable-press.webp"
+      },
+      {
+        "order": 5,
+        "id": "high-to-low-cable-crossover",
+        "namePl": "Ściąganie linek z góry do dołu",
+        "nameEn": "High-to-Low Cable Crossover",
+        "category": "isolation",
+        "equipment": [
+          "brama",
+          "uchwyty pojedyncze"
+        ],
+        "primaryMuscles": [
+          "dolna część klatki piersiowej"
+        ],
+        "secondaryMuscles": [
+          "przedni akton barków"
+        ],
+        "sets": 3,
+        "repRange": {
+          "min": 12,
+          "max": 20
+        },
+        "targetRir": "0–1 w ostatniej serii",
+        "restSeconds": 60,
+        "tempo": "3-1-1-2",
+        "instructions": [
+          "Ustaw bloczki wysoko, powyżej linii barków.",
+          "Stań stabilnie z lekkim pochyleniem do przodu.",
+          "Przy lekko ugiętych łokciach prowadź dłonie po łuku w dół i do środka.",
+          "Skrzyżuj lub zbliż dłonie na wysokości dolnej części brzucha.",
+          "Powróć powoli do szerokiego rozciągnięcia."
+        ],
+        "commonMistakes": [
+          "Zbyt duży ciężar i zamiana ruchu w wyciskanie.",
+          "Zginanie i prostowanie łokci.",
+          "Kończenie ruchu zbyt wysoko.",
+          "Zapadanie klatki i wysuwanie barków."
+        ],
+        "coachCues": [
+          "Prowadź łokcie po szerokim łuku.",
+          "Na dole mocno dopnij dolną część klatki przez 1–2 sekundy."
+        ],
+        "imageUrl": "/images/exercises/high-to-low-cable-crossover.webp"
+      },
+      {
+        "order": 6,
+        "id": "push-up-finisher",
+        "namePl": "Pompki – finisher",
+        "nameEn": "Push-Up Finisher",
+        "category": "finisher",
+        "equipment": [
+          "masa ciała"
+        ],
+        "primaryMuscles": [
+          "klatka piersiowa"
+        ],
+        "secondaryMuscles": [
+          "triceps",
+          "przedni akton barków"
+        ],
+        "sets": 2,
+        "repRange": {
+          "min": 8,
+          "max": 30
+        },
+        "targetRir": "do technicznego upadku",
+        "restSeconds": 45,
+        "tempo": "3-1-X-0",
+        "instructions": [
+          "Ustaw dłonie nieco szerzej niż barki.",
+          "Utrzymuj ciało w jednej linii.",
+          "Opuszczaj klatkę kontrolowanie w stronę podłoża.",
+          "Zakończ serię, gdy nie możesz utrzymać pełnego zakresu i stabilnej pozycji."
+        ],
+        "commonMistakes": [
+          "Opadanie bioder.",
+          "Wysuwanie głowy do przodu.",
+          "Skracanie zakresu.",
+          "Kontynuowanie serii mimo utraty techniki."
+        ],
+        "coachCues": [
+          "Łokcie prowadź około 30–45 stopni od tułowia.",
+          "Myśl o odpychaniu podłoża od siebie."
+        ],
+        "imageUrl": "/images/exercises/push-up-finisher.webp"
+      }
+    ]
+  }
+}
