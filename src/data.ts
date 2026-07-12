@@ -1,11 +1,11 @@
 import type {Exercise,TrainingTemplate} from './types';
 import chestBSource from './klatka_b_plan.json';
-const ex=(id:string,namePl:string,nameEn:string,muscles:Exercise['muscles'],equipment:string,tip?:string,alternatives:string[]=[]):Exercise=>({id,namePl,nameEn,muscles,equipment,tip:tip||'Kontroluj fazę opuszczania i dobierz ciężar pozwalający utrzymać pełny, bezbolesny zakres.',alternatives,illustrationStart:`/exercise-art/${id}-start.webp`,illustrationEnd:`/exercise-art/${id}-end.webp`,steps:['Ustaw stabilną pozycję i napnij brzuch.','Rozpocznij ruch z kontrolowanym napięciem mięśni docelowych.','Wykonaj pełny, bezbolesny zakres bez szarpania.','Wróć wolniej do pozycji początkowej i zachowaj napięcie.'],errors:['Zbyt duży ciężar i skrócony zakres ruchu','Szarpanie ciężarem lub utrata stabilnej pozycji','Ignorowanie bólu stawowego']});
+const ex=(id:string,namePl:string,nameEn:string,muscles:Exercise['muscles'],equipment:string,tip?:string,alternatives:string[]=[],imageUrl?:string):Exercise=>({id,namePl,nameEn,muscles,equipment,tip:tip||'Kontroluj fazę opuszczania i dobierz ciężar pozwalający utrzymać pełny, bezbolesny zakres.',alternatives,imageUrl,illustrationStart:`/exercise-art/${id}-start.webp`,illustrationEnd:`/exercise-art/${id}-end.webp`,steps:['Ustaw stabilną pozycję i napnij brzuch.','Rozpocznij ruch z kontrolowanym napięciem mięśni docelowych.','Wykonaj pełny, bezbolesny zakres bez szarpania.','Wróć wolniej do pozycji początkowej i zachowaj napięcie.'],errors:['Zbyt duży ciężar i skrócony zakres ruchu','Szarpanie ciężarem lub utrata stabilnej pozycji','Ignorowanie bólu stawowego']});
 const chestBExercises:Exercise[]=chestBSource.plan.exercises.map(item=>({id:item.id,namePl:item.namePl,nameEn:item.nameEn,muscles:['Klatka'],equipment:item.equipment.join(', '),steps:item.instructions,errors:item.commonMistakes,tip:item.coachCues[0],coachCues:item.coachCues,imageUrl:item.imageUrl,sets:item.sets,repRange:item.repRange,targetRir:item.targetRir,restSeconds:item.restSeconds,tempo:item.tempo,category:item.category,primaryMuscles:item.primaryMuscles,secondaryMuscles:item.secondaryMuscles}));
 export const exercises:Exercise[]=[
  ex('bench','Wyciskanie sztangi leżąc','Barbell Bench Press',['Klatka','Ramiona'],'Sztanga, ławka'),
  ex('incline-db','Wyciskanie hantli na skosie','Incline Dumbbell Press',['Klatka','Barki'],'Hantle, ławka'),
- ex('cable-fly','Rozpiętki na bramie','Cable Fly',['Klatka'],'Brama'),
+ ex('cable-fly','Rozpiętki na bramie','Cable Fly',['Klatka'],'Brama',undefined,[],'/images/exercises/cable-fly.webp'),
  ex('chest-press','Wyciskanie na maszynie','Machine Chest Press',['Klatka','Ramiona'],'Maszyna'),
  ex('low-high','Rozpiętki z dołu','Low-to-High Cable Fly',['Klatka'],'Brama'),
  ex('pec-deck','Butterfly','Pec Deck Fly',['Klatka'],'Maszyna'),
@@ -33,7 +33,7 @@ export const exercises:Exercise[]=[
  ex('incline-curl','Uginanie hantli na ławce skośnej','Incline Dumbbell Curl',['Ramiona'],'Hantle, ławka'),
  ex('cable-curl','Uginanie ramion na wyciągu','Cable Curl',['Ramiona'],'Wyciąg'),
  ex('hammer-curl','Uginanie młotkowe','Hammer Curl',['Ramiona'],'Hantle'),
- ex('rope-pushdown','Prostowanie ramion z liną','Rope Pushdown',['Ramiona'],'Wyciąg'),
+ ex('rope-pushdown','Prostowanie ramion z liną','Rope Pushdown',['Ramiona'],'Wyciąg',undefined,[],'/images/exercises/rope-pushdown.webp'),
  ex('overhead-triceps','Wyprost tricepsa nad głową','Overhead Cable Triceps Extension',['Ramiona'],'Wyciąg'),
  ex('arm-finisher','Finisher ramion','Arm Finisher',['Ramiona'],'Hantle lub wyciąg'),
  ex('walk','Spacer','Walk',['Regeneracja'],'Bez sprzętu'),
