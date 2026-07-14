@@ -14,8 +14,8 @@ describe('grafiki ćwiczeń',()=>{
   const missing=exercises.map(e=>e.thumbnailUrl).filter((url):url is string=>Boolean(url)).filter(url=>!existsInPublic(url));
   expect(missing).toEqual([]);
  });
- it('podłącza cały otrzymany pakiet 42 ilustracji',()=>{
-  expect(generatedImages).toHaveLength(42);
+ it('podłącza kompletną bibliotekę 43 ilustracji',()=>{
+  expect(generatedImages).toHaveLength(43);
   for(const item of generatedImages){
    const exercise=exercises.find(e=>e.id===item.exerciseId);
    expect(exercise?.imageUrl).toBe(item.imageUrl);

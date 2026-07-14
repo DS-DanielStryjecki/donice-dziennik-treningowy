@@ -1,5 +1,12 @@
 [
   {
+    "exerciseId": "bench",
+    "namePl": "Wyciskanie sztangi leżąc",
+    "imageUrl": "/images/exercises/bench.webp",
+    "thumbnailUrl": "/images/exercises/bench-thumb.webp",
+    "status": "generated"
+  },
+  {
     "exerciseId": "arm-finisher",
     "namePl": "Finisher ramion",
     "imageUrl": "/images/exercises/arm-finisher.webp",
@@ -294,4 +301,3 @@
     "status": "generated"
   }
 ]
-
