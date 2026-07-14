@@ -1,0 +1,297 @@
+[
+  {
+    "exerciseId": "arm-finisher",
+    "namePl": "Finisher ramion",
+    "imageUrl": "/images/exercises/arm-finisher.webp",
+    "thumbnailUrl": "/images/exercises/arm-finisher-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "arnold",
+    "namePl": "Wyciskanie Arnolda",
+    "imageUrl": "/images/exercises/arnold.webp",
+    "thumbnailUrl": "/images/exercises/arnold-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "back-extension",
+    "namePl": "Prostowanie grzbietu",
+    "imageUrl": "/images/exercises/back-extension.webp",
+    "thumbnailUrl": "/images/exercises/back-extension-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "cable-curl",
+    "namePl": "Uginanie ramion na wyciągu",
+    "imageUrl": "/images/exercises/cable-curl.webp",
+    "thumbnailUrl": "/images/exercises/cable-curl-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "cable-lateral",
+    "namePl": "Wznosy bokiem na wyciągu",
+    "imageUrl": "/images/exercises/cable-lateral.webp",
+    "thumbnailUrl": "/images/exercises/cable-lateral-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "chest-press",
+    "namePl": "Wyciskanie na maszynie",
+    "imageUrl": "/images/exercises/chest-press.webp",
+    "thumbnailUrl": "/images/exercises/chest-press-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "chest-squeeze-isometric",
+    "namePl": "Izometryczne spięcie klatki",
+    "imageUrl": "/images/exercises/chest-squeeze-isometric.webp",
+    "thumbnailUrl": "/images/exercises/chest-squeeze-isometric-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "db-lateral",
+    "namePl": "Wznosy hantli bokiem",
+    "imageUrl": "/images/exercises/db-lateral.webp",
+    "thumbnailUrl": "/images/exercises/db-lateral-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "db-shoulder-press",
+    "namePl": "Wyciskanie hantli siedząc",
+    "imageUrl": "/images/exercises/db-shoulder-press.webp",
+    "thumbnailUrl": "/images/exercises/db-shoulder-press-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "face-pull",
+    "namePl": "Przyciąganie liny do twarzy",
+    "imageUrl": "/images/exercises/face-pull.webp",
+    "thumbnailUrl": "/images/exercises/face-pull-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "front-raise",
+    "namePl": "Jednorącz wznos linki przodem",
+    "imageUrl": "/images/exercises/front-raise.webp",
+    "thumbnailUrl": "/images/exercises/front-raise-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "hammer-curl",
+    "namePl": "Uginanie młotkowe",
+    "imageUrl": "/images/exercises/hammer-curl.webp",
+    "thumbnailUrl": "/images/exercises/hammer-curl-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "hammer-row",
+    "namePl": "Wiosłowanie Hammer Strength jednorącz",
+    "imageUrl": "/images/exercises/hammer-row.webp",
+    "thumbnailUrl": "/images/exercises/hammer-row-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "incline-cable-press",
+    "namePl": "Wyciskanie na linkach skos dodatni",
+    "imageUrl": "/images/exercises/incline-cable-press.webp",
+    "thumbnailUrl": "/images/exercises/incline-cable-press-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "incline-curl",
+    "namePl": "Uginanie hantli na ławce skośnej",
+    "imageUrl": "/images/exercises/incline-curl.webp",
+    "thumbnailUrl": "/images/exercises/incline-curl-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "incline-db",
+    "namePl": "Wyciskanie hantli na skosie",
+    "imageUrl": "/images/exercises/incline-db.webp",
+    "thumbnailUrl": "/images/exercises/incline-db-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "incline-hammer-strength-press",
+    "namePl": "Wyciskanie na Hammer Strength skos dodatni",
+    "imageUrl": "/images/exercises/incline-hammer-strength-press.webp",
+    "thumbnailUrl": "/images/exercises/incline-hammer-strength-press-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "lateral-finisher",
+    "namePl": "Finisher wznosów bokiem",
+    "imageUrl": "/images/exercises/lateral-finisher.webp",
+    "thumbnailUrl": "/images/exercises/lateral-finisher-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "low-high",
+    "namePl": "Rozpiętki z dołu",
+    "imageUrl": "/images/exercises/low-high.webp",
+    "thumbnailUrl": "/images/exercises/low-high-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "low-to-high-cable-fly",
+    "namePl": "Rozpiętki na linkach z dołu do góry",
+    "imageUrl": "/images/exercises/low-to-high-cable-fly.webp",
+    "thumbnailUrl": "/images/exercises/low-to-high-cable-fly-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "machine-chest-press-upper-focus",
+    "namePl": "Wyciskanie na maszynie - akcent góry klatki",
+    "imageUrl": "/images/exercises/machine-chest-press-upper-focus.webp",
+    "thumbnailUrl": "/images/exercises/machine-chest-press-upper-focus-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "machine-lateral",
+    "namePl": "Wznosy bokiem na maszynie",
+    "imageUrl": "/images/exercises/machine-lateral.webp",
+    "thumbnailUrl": "/images/exercises/machine-lateral-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "machine-shoulder-press",
+    "namePl": "Wyciskanie barkowe na maszynie",
+    "imageUrl": "/images/exercises/machine-shoulder-press.webp",
+    "thumbnailUrl": "/images/exercises/machine-shoulder-press-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "neutral-pulldown",
+    "namePl": "Ściąganie drążka chwytem neutralnym",
+    "imageUrl": "/images/exercises/neutral-pulldown.webp",
+    "thumbnailUrl": "/images/exercises/neutral-pulldown-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "onearm-pulldown",
+    "namePl": "Ściąganie wyciągu jednorącz",
+    "imageUrl": "/images/exercises/onearm-pulldown.webp",
+    "thumbnailUrl": "/images/exercises/onearm-pulldown-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "overhead-triceps",
+    "namePl": "Wyprost tricepsa nad głową",
+    "imageUrl": "/images/exercises/overhead-triceps.webp",
+    "thumbnailUrl": "/images/exercises/overhead-triceps-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "pec-deck",
+    "namePl": "Butterfly",
+    "imageUrl": "/images/exercises/pec-deck.webp",
+    "thumbnailUrl": "/images/exercises/pec-deck-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "pec-deck-fly",
+    "namePl": "Rozpiętki na maszynie Pec Deck",
+    "imageUrl": "/images/exercises/pec-deck-fly.webp",
+    "thumbnailUrl": "/images/exercises/pec-deck-fly-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "push-up-finisher",
+    "namePl": "Pompki - finisher",
+    "imageUrl": "/images/exercises/push-up-finisher.webp",
+    "thumbnailUrl": "/images/exercises/push-up-finisher-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "pushup",
+    "namePl": "Pompki",
+    "imageUrl": "/images/exercises/pushup.webp",
+    "thumbnailUrl": "/images/exercises/pushup-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "rear-delt",
+    "namePl": "Jednorącz odwodzenie na tył barku",
+    "imageUrl": "/images/exercises/rear-delt.webp",
+    "thumbnailUrl": "/images/exercises/rear-delt-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "reverse-pec",
+    "namePl": "Odwrotne rozpiętki na maszynie",
+    "imageUrl": "/images/exercises/reverse-pec.webp",
+    "thumbnailUrl": "/images/exercises/reverse-pec-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "seated-lateral",
+    "namePl": "Wznosy bokiem siedząc",
+    "imageUrl": "/images/exercises/seated-lateral.webp",
+    "thumbnailUrl": "/images/exercises/seated-lateral-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "seated-row",
+    "namePl": "Wiosłowanie siedząc na wyciągu",
+    "imageUrl": "/images/exercises/seated-row.webp",
+    "thumbnailUrl": "/images/exercises/seated-row-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "shoulder-mobility",
+    "namePl": "Lekka mobilizacja obręczy barkowej",
+    "imageUrl": "/images/exercises/shoulder-mobility.webp",
+    "thumbnailUrl": "/images/exercises/shoulder-mobility-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "shrugs",
+    "namePl": "Szrugsy",
+    "imageUrl": "/images/exercises/shrugs.webp",
+    "thumbnailUrl": "/images/exercises/shrugs-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "sleep-hydration",
+    "namePl": "Sen i nawodnienie",
+    "imageUrl": "/images/exercises/sleep-hydration.webp",
+    "thumbnailUrl": "/images/exercises/sleep-hydration-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "straightarm",
+    "namePl": "Ściąganie prostych ramion",
+    "imageUrl": "/images/exercises/straightarm.webp",
+    "thumbnailUrl": "/images/exercises/straightarm-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "stretch-push-up",
+    "namePl": "Pompki rozciągające na podwyższeniu",
+    "imageUrl": "/images/exercises/stretch-push-up.webp",
+    "thumbnailUrl": "/images/exercises/stretch-push-up-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "stretching",
+    "namePl": "Łagodne rozciąganie",
+    "imageUrl": "/images/exercises/stretching.webp",
+    "thumbnailUrl": "/images/exercises/stretching-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "walk",
+    "namePl": "Spacer",
+    "imageUrl": "/images/exercises/walk.webp",
+    "thumbnailUrl": "/images/exercises/walk-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "wide-pulldown",
+    "namePl": "Ściąganie drążka szerokim chwytem",
+    "imageUrl": "/images/exercises/wide-pulldown.webp",
+    "thumbnailUrl": "/images/exercises/wide-pulldown-thumb.webp",
+    "status": "generated"
+  }
+]
+
