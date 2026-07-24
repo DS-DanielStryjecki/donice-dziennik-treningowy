@@ -1,5 +1,5 @@
 import type{Exercise,GymProfile}from'./types';
-export const equipmentCatalog=['Hantle','Sztanga','Ławka','Brama','Wyciąg górny','Wyciąg dolny','Maszyny','Pec deck','Hammer Strength','Drążek','Lina','Uchwyty pojedyncze','Gryf prosty','Gryf łamany','Gumy','Mata','Ławka rzymska'] as const;
+export const equipmentCatalog=['Hantle','Sztanga','Ławka','Brama','Wyciąg górny','Wyciąg dolny','Maszyny','Pec deck','Hammer Strength','Poręcze','Pas z obciążeniem','Drążek','Lina','Uchwyty pojedyncze','Gryf prosty','Gryf łamany','Gumy','Mata','Ławka rzymska'] as const;
 const norm=(value:string)=>value.toLocaleLowerCase('pl').normalize('NFD').replace(/\p{Diacritic}/gu,'').replaceAll('ł','l');
 const has=(available:string[],needle:string)=>available.some(item=>norm(item).includes(norm(needle))||norm(needle).includes(norm(item)));
 export const isExerciseAvailable=(exercise:Exercise,profile?:GymProfile)=>{

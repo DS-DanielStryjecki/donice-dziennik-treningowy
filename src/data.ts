@@ -9,6 +9,8 @@ const chestCExercises:Exercise[]=chestCSource.plan.exercises.map(item=>({id:item
 export const exercises:Exercise[]=[
  ex('bench','Wyciskanie sztangi leżąc','Barbell Bench Press',['Klatka','Ramiona'],'Sztanga, ławka'),
  ex('incline-db','Wyciskanie hantli na skosie','Incline Dumbbell Press',['Klatka','Barki'],'Hantle, ławka'),
+ ex('flat-db','Wyciskanie hantli na ławce poziomej','Flat Dumbbell Press',['Klatka','Ramiona'],'Hantle, ławka'),
+ ex('weighted-dips','Dipy z obciążeniem','Weighted Dips',['Klatka','Ramiona'],'Poręcze, pas z obciążeniem'),
  ex('cable-fly','Rozpiętki na bramie','Cable Fly',['Klatka'],'Brama',undefined,[],'/images/exercises/cable-fly.webp'),
  ex('chest-press','Wyciskanie na maszynie','Machine Chest Press',['Klatka','Ramiona'],'Maszyna'),
  ex('low-high','Rozpiętki z dołu','Low-to-High Cable Fly',['Klatka'],'Brama'),
@@ -48,7 +50,7 @@ export const exercises:Exercise[]=[
  ...chestCExercises
 ];
 export const templates:TrainingTemplate[]=[
- {id:'chest-a',name:'KLATKA A',focus:'Klatka',variant:'A',description:'Ciężka · progresja siłowa',exerciseIds:['bench','incline-db','cable-fly']},
+ {id:'chest-a',name:'KLATKA A – SIŁA + GĘSTOŚĆ',focus:'Klatka',variant:'A',description:'Maksymalna hipertrofia · siła · grubość mięśni',exerciseIds:['incline-db','flat-db','weighted-dips','incline-hammer-strength-press','chest-squeeze-isometric'],prescriptions:{'incline-db':{sets:4,repRange:{min:6,max:10},targetRir:'1–2',restSeconds:150},'flat-db':{sets:3,repRange:{min:6,max:10},targetRir:'1–2',restSeconds:150},'weighted-dips':{sets:3,repRange:{min:6,max:10},targetRir:'1–2',restSeconds:150},'incline-hammer-strength-press':{sets:3,repRange:{min:8,max:12},targetRir:'1–2',restSeconds:135},'chest-squeeze-isometric':{sets:3,repRange:{min:30,max:60},repUnit:'sekundy',targetRir:'1–2',restSeconds:60}}},
  {id:chestBSource.plan.id,name:chestBSource.plan.name,nameEn:chestBSource.plan.nameEn,focus:'Klatka',variant:'B',description:chestBSource.plan.goal,goal:chestBSource.plan.goal,notes:chestBSource.plan.notes,estimatedDurationMin:chestBSource.plan.estimatedDurationMin,sourceSchemaVersion:chestBSource.schemaVersion,exerciseIds:chestBSource.plan.exercises.sort((a,b)=>a.order-b.order).map(item=>item.id)},
  {id:chestCSource.plan.id,name:chestCSource.plan.name,nameEn:chestCSource.plan.nameEn,focus:'Klatka',variant:'C',description:chestCSource.plan.goal,goal:chestCSource.plan.goal,notes:chestCSource.plan.notes,estimatedDurationMin:chestCSource.plan.estimatedDurationMin,sourceSchemaVersion:chestCSource.schemaVersion,exerciseIds:[...chestCSource.plan.exercises].sort((a,b)=>a.order-b.order).map(item=>item.id)},
  {id:'chest-d',name:'KLATKA D',focus:'Klatka',variant:'D',description:'Pompa · dopalenie · intensyfikacja',exerciseIds:['chest-press','pec-deck','pushup']},
