@@ -299,5 +299,19 @@
     "imageUrl": "/images/exercises/wide-pulldown.webp",
     "thumbnailUrl": "/images/exercises/wide-pulldown-thumb.webp",
     "status": "generated"
+  },
+  {
+    "exerciseId": "flat-db",
+    "namePl": "Wyciskanie hantli na ławce płaskiej",
+    "imageUrl": "/images/exercises/flat-db.webp",
+    "thumbnailUrl": "/images/exercises/flat-db-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "weighted-dips",
+    "namePl": "Dipy z obciążeniem",
+    "imageUrl": "/images/exercises/weighted-dips.webp",
+    "thumbnailUrl": "/images/exercises/weighted-dips-thumb.webp",
+    "status": "generated"
   }
 ]
