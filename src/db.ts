@@ -1,12 +1,54 @@
 import {openDB} from 'idb';
 import type {CustomPlan,Exercise,GymProfile,Recovery,TrainingSession} from './types';
+const DRAFT_MIRROR_KEY='donice-training-active-draft-v1';
+const SESSIONS_MIRROR_KEY='donice-training-sessions-v1';
+type DraftMirror={savedAt:string,value:TrainingSession|null};
+const readDraftMirror=():DraftMirror|undefined=>{
+ try{
+  const raw=localStorage.getItem(DRAFT_MIRROR_KEY);
+  if(!raw)return undefined;
+  const parsed=JSON.parse(raw) as DraftMirror;
+  if(typeof parsed?.savedAt!=='string'||(parsed.value!==null&&typeof parsed.value?.id!=='string'))return undefined;
+  return parsed;
+ }catch{return undefined}
+};
+const writeDraftMirror=(value:TrainingSession|null)=>{
+ try{localStorage.setItem(DRAFT_MIRROR_KEY,JSON.stringify({savedAt:new Date().toISOString(),value} satisfies DraftMirror))}
+ catch(error){console.error('Nie udało się wykonać awaryjnego zapisu treningu',error)}
+};
+const readSessionsMirror=():TrainingSession[]=>{
+ try{const parsed=JSON.parse(localStorage.getItem(SESSIONS_MIRROR_KEY)||'[]');return Array.isArray(parsed)?parsed.filter(s=>typeof s?.id==='string'):[]}
+ catch{return []}
+};
+const writeSessionMirror=(session:TrainingSession)=>{
+ try{
+  const saved=readSessionsMirror();
+  localStorage.setItem(SESSIONS_MIRROR_KEY,JSON.stringify([...saved.filter(s=>s.id!==session.id),session]));
+ }catch(error){console.error('Nie udało się wykonać kopii dnia treningowego',error)}
+};
+const deleteSessionMirror=(id:string)=>{
+ try{localStorage.setItem(SESSIONS_MIRROR_KEY,JSON.stringify(readSessionsMirror().filter(s=>s.id!==id)))}
+ catch(error){console.error('Nie udało się usunąć kopii dnia treningowego',error)}
+};
 const dbp=openDB('donice-training',5,{upgrade(db,oldVersion,_newVersion,tx){if(!db.objectStoreNames.contains('sessions'))db.createObjectStore('sessions',{keyPath:'id'});if(!db.objectStoreNames.contains('recovery'))db.createObjectStore('recovery',{keyPath:'id'});if(!db.objectStoreNames.contains('exercises'))db.createObjectStore('exercises',{keyPath:'id'});if(!db.objectStoreNames.contains('draft'))db.createObjectStore('draft');if(!db.objectStoreNames.contains('settings'))db.createObjectStore('settings');if(!db.objectStoreNames.contains('plans'))db.createObjectStore('plans',{keyPath:'id'});if(!db.objectStoreNames.contains('sessionBackup'))db.createObjectStore('sessionBackup',{keyPath:'id'});if(oldVersion>0&&oldVersion<4&&db.objectStoreNames.contains('plans')){const store=tx.objectStore('plans');store.openCursor().then(function migrate(cursor):Promise<void>|void{if(!cursor)return;const plan=cursor.value as CustomPlan;plan.exercises=plan.exercises.map(e=>({...e,targetRir:e.targetRir??String(e.rir??2),restSeconds:e.restSeconds??90,tempo:e.tempo??'3-0-1-0'}));cursor.update(plan);return cursor.continue().then(migrate)})}if(oldVersion>0&&oldVersion<5){const sessions=tx.objectStore('sessions');const backup=tx.objectStore('sessionBackup');sessions.openCursor().then(function copy(cursor):Promise<void>|void{if(!cursor)return;backup.put(cursor.value);return cursor.continue().then(copy)})}}});
 export const db={
- sessions:async()=>{const d=await dbp;const [main,backup]=await Promise.all([d.getAll('sessions'),d.getAll('sessionBackup')]) as [TrainingSession[],TrainingSession[]];const merged=[...main];for(const saved of backup)if(!merged.some(s=>s.id===saved.id)){merged.push(saved);await d.put('sessions',saved)}return merged},
- saveSession:async(s:TrainingSession)=>{const d=await dbp;const tx=d.transaction(['sessions','sessionBackup'],'readwrite');await Promise.all([tx.objectStore('sessions').put(s),tx.objectStore('sessionBackup').put(s),tx.done])},
- deleteSession:async(id:string)=>{const d=await dbp;const tx=d.transaction(['sessions','sessionBackup'],'readwrite');await Promise.all([tx.objectStore('sessions').delete(id),tx.objectStore('sessionBackup').delete(id),tx.done])},
- saveDraft:async(s:TrainingSession|null)=>s?await (await dbp).put('draft',s,'active'):await (await dbp).delete('draft','active'),
- draft:async()=>await (await dbp).get('draft','active') as TrainingSession|undefined,
+ sessions:async()=>{const d=await dbp;const [main,backup]=await Promise.all([d.getAll('sessions'),d.getAll('sessionBackup')]) as [TrainingSession[],TrainingSession[]];const merged=[...main];for(const saved of [...backup,...readSessionsMirror()]){const existing=merged.findIndex(s=>s.id===saved.id);if(existing<0)merged.push(saved);else if((saved.completedAt||saved.startedAt)>(merged[existing].completedAt||merged[existing].startedAt))merged[existing]=saved;await d.put('sessions',saved)}return merged},
+ saveSession:async(s:TrainingSession)=>{writeSessionMirror(s);const d=await dbp;const tx=d.transaction(['sessions','sessionBackup'],'readwrite');await Promise.all([tx.objectStore('sessions').put(s),tx.objectStore('sessionBackup').put(s),tx.done])},
+ deleteSession:async(id:string)=>{deleteSessionMirror(id);const d=await dbp;const tx=d.transaction(['sessions','sessionBackup'],'readwrite');await Promise.all([tx.objectStore('sessions').delete(id),tx.objectStore('sessionBackup').delete(id),tx.done])},
+ saveDraft:async(s:TrainingSession|null)=>{
+  // localStorage is synchronous, so the latest keystroke survives even when iOS
+  // suspends the PWA before an IndexedDB transaction has time to finish.
+  writeDraftMirror(s);
+  const d=await dbp;
+  if(s)await d.put('draft',s,'active');else await d.delete('draft','active');
+ },
+ draft:async()=>{
+  const mirror=readDraftMirror();
+  if(mirror)return mirror.value??undefined;
+  const saved=await (await dbp).get('draft','active') as TrainingSession|undefined;
+  if(saved)writeDraftMirror(saved);
+  return saved;
+ },
  recoveries:async()=>((await (await dbp).getAll('recovery')) as Recovery[]).map(r=>({...r,backSoreness:r.backSoreness??0})),
  saveRecovery:async(r:Recovery)=>await (await dbp).put('recovery',r),
  customExercises:async()=>await (await dbp).getAll('exercises') as Exercise[],

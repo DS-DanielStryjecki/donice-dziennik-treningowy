@@ -1,0 +1,4 @@
+import{describe,expect,it}from'vitest';import{isExerciseAvailable}from'./equipment';import type{Exercise,GymProfile}from'./types';
+const exercise=(equipment:string)=>({id:'x',namePl:'X',nameEn:'X',muscles:['Klatka'],equipment,steps:[],errors:[]} as Exercise);
+const gym=(equipment:string[])=>({id:'g',name:'Gym',country:'PL',active:true,equipment} as GymProfile);
+describe('profil sprzętu',()=>{it('wymaga całego zestawu po przecinku',()=>expect(isExerciseAvailable(exercise('Hantle, ławka'),gym(['Hantle']))).toBe(false));it('akceptuje jeden wariant ze słowem lub',()=>expect(isExerciseAvailable(exercise('Hantle lub sztanga'),gym(['Sztanga']))).toBe(true));it('nie blokuje masy ciała',()=>expect(isExerciseAvailable(exercise('Masa ciała'),gym(['Brama']))).toBe(true));it('rozpoznaje bramę jako wyciąg',()=>expect(isExerciseAvailable(exercise('Wyciąg'),gym(['Brama']))).toBe(true))});
