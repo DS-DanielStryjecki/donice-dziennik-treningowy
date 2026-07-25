@@ -313,5 +313,54 @@
     "imageUrl": "/images/exercises/weighted-dips.webp",
     "thumbnailUrl": "/images/exercises/weighted-dips-thumb.webp",
     "status": "generated"
+  },
+  {
+    "exerciseId": "cable-fly",
+    "namePl": "Rozpiętki na bramie",
+    "imageUrl": "/images/exercises/cable-fly.webp",
+    "thumbnailUrl": "/images/exercises/cable-fly-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "rope-pushdown",
+    "namePl": "Prostowanie ramion z liną",
+    "imageUrl": "/images/exercises/rope-pushdown.webp",
+    "thumbnailUrl": "/images/exercises/rope-pushdown-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "incline-dumbbell-press",
+    "namePl": "Wyciskanie hantli na ławce dodatniej",
+    "imageUrl": "/images/exercises/incline-dumbbell-press.webp",
+    "thumbnailUrl": "/images/exercises/incline-dumbbell-press-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "flat-machine-chest-press",
+    "namePl": "Wyciskanie na maszynie poziomej",
+    "imageUrl": "/images/exercises/flat-machine-chest-press.webp",
+    "thumbnailUrl": "/images/exercises/flat-machine-chest-press-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "decline-cable-press",
+    "namePl": "Wyciskanie na linkach z góry w dół",
+    "imageUrl": "/images/exercises/decline-cable-press.webp",
+    "thumbnailUrl": "/images/exercises/decline-cable-press-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "high-to-low-cable-crossover",
+    "namePl": "Ściąganie linek z góry do dołu",
+    "imageUrl": "/images/exercises/high-to-low-cable-crossover.webp",
+    "thumbnailUrl": "/images/exercises/high-to-low-cable-crossover-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "single-arm-standing-cable-press",
+    "namePl": "Jednorącz wyciskanie linki stojąc",
+    "imageUrl": "/images/exercises/single-arm-standing-cable-press.webp",
+    "thumbnailUrl": "/images/exercises/single-arm-standing-cable-press-thumb.webp",
+    "status": "generated"
   }
 ]
