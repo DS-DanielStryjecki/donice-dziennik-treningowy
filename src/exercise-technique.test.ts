@@ -9,6 +9,7 @@ describe('indywidualne instrukcje techniczne',()=>{
   expect(Object.keys(exerciseTechnique)).toHaveLength(52);
   for(const exercise of exercises){
    expect(exerciseTechnique[exercise.id],exercise.id).toBeDefined();
+   expect(exercise.description?.trim().length??0,exercise.id).toBeGreaterThan(60);
    expect(exercise.steps.length,exercise.id).toBeGreaterThanOrEqual(3);
    expect(exercise.errors.length,exercise.id).toBeGreaterThanOrEqual(3);
    expect(exercise.coachCues?.length,exercise.id).toBeGreaterThanOrEqual(2);
@@ -21,5 +22,10 @@ describe('indywidualne instrukcje techniczne',()=>{
  it('nie powiela wskazówek między ćwiczeniami',()=>{
   const tips=exercises.map(exercise=>exercise.tip);
   expect(new Set(tips).size).toBe(tips.length);
+ });
+ it('nie powiela opisów między ćwiczeniami',()=>{
+  const descriptions=exercises.map(exercise=>exercise.description?.trim());
+  expect(descriptions.every(Boolean)).toBe(true);
+  expect(new Set(descriptions).size).toBe(descriptions.length);
  });
 });
