@@ -154,12 +154,12 @@
       {
         "order": 4,
         "id": "decline-cable-press",
-        "namePl": "Wyciskanie na linkach z góry w dół",
-        "nameEn": "Decline Cable Press",
+        "namePl": "Wyciskanie na linkach z góry (dół klatki)",
+        "nameEn": "Decline Cable Chest Press",
         "category": "compound",
         "equipment": [
           "brama",
-          "uchwyty pojedyncze"
+          "para uchwytów pojedynczych"
         ],
         "primaryMuscles": [
           "dolna część klatki piersiowej"
@@ -202,7 +202,7 @@
         "category": "isolation",
         "equipment": [
           "brama",
-          "uchwyty pojedyncze"
+          "para uchwytów pojedynczych"
         ],
         "primaryMuscles": [
           "dolna część klatki piersiowej"

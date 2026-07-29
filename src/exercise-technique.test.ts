@@ -6,7 +6,7 @@ const genericPhrases=['Ustaw stabilną pozycję i napnij brzuch.','Rozpocznij ru
 
 describe('indywidualne instrukcje techniczne',()=>{
  it('każde ćwiczenie w całej bibliotece ma kompletną, własną technikę',()=>{
-  expect(Object.keys(exerciseTechnique)).toHaveLength(52);
+  expect(Object.keys(exerciseTechnique)).toHaveLength(54);
   for(const exercise of exercises){
    expect(exerciseTechnique[exercise.id],exercise.id).toBeDefined();
    expect(exercise.description?.trim().length??0,exercise.id).toBeGreaterThan(60);

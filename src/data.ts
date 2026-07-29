@@ -1,61 +1,68 @@
-import type {Exercise,TrainingTemplate} from './types';
+import type {Exercise,ExerciseAlternativeReference,TrainingTemplate} from './types';
 import chestBSource from './klatka_b_plan.json';
 import chestCSource from './klatka_c_plan.json';
 import generatedImages from './exercise-images.json';
+import {applyCuratedExerciseModel} from './exerciseAlternatives';
 import {exerciseTechnique} from './exercise-technique';
 const imageFor=(id:string)=>generatedImages.find(item=>item.exerciseId===id);
-const ex=(id:string,namePl:string,nameEn:string,muscles:Exercise['muscles'],equipment:string,tip?:string,alternatives:string[]=[],imageUrl?:string):Exercise=>({id,namePl,nameEn,muscles,equipment,...exerciseTechnique[id],tip:tip||exerciseTechnique[id].tip,alternatives,imageUrl:imageUrl||imageFor(id)?.imageUrl,thumbnailUrl:imageFor(id)?.thumbnailUrl,illustrationStart:`/exercise-art/${id}-start.webp`,illustrationEnd:`/exercise-art/${id}-end.webp`});
+const ex=(id:string,namePl:string,nameEn:string,muscles:Exercise['muscles'],equipment:string,tip?:string,alternatives:ExerciseAlternativeReference[]=[],imageUrl?:string):Exercise=>({id,namePl,nameEn,muscles,equipment,...exerciseTechnique[id],tip:tip||exerciseTechnique[id].tip,alternatives,imageUrl:imageUrl||imageFor(id)?.imageUrl,thumbnailUrl:imageFor(id)?.thumbnailUrl,illustrationStart:`/exercise-art/${id}-start.webp`,illustrationEnd:`/exercise-art/${id}-end.webp`});
 const chestBExercises:Exercise[]=chestBSource.plan.exercises.map(item=>({id:item.id,namePl:item.namePl,nameEn:item.nameEn,muscles:['Klatka'],equipment:item.equipment.join(', '),...exerciseTechnique[item.id],imageUrl:imageFor(item.id)?.imageUrl||item.imageUrl,thumbnailUrl:imageFor(item.id)?.thumbnailUrl,sets:item.sets,repRange:item.repRange,targetRir:item.targetRir,restSeconds:item.restSeconds,tempo:item.tempo,category:item.category,primaryMuscles:item.primaryMuscles,secondaryMuscles:item.secondaryMuscles}));
 const chestCExercises:Exercise[]=chestCSource.plan.exercises.map(item=>({id:item.id,namePl:item.namePl,nameEn:item.nameEn,muscles:['Klatka'],equipment:item.equipment.join(', '),...exerciseTechnique[item.id],imageUrl:imageFor(item.id)?.imageUrl||item.imageUrl,thumbnailUrl:imageFor(item.id)?.thumbnailUrl,sets:item.sets,repRange:item.repRange,repUnit:'repUnit'in item?item.repUnit:undefined,targetRir:item.targetRir,restSeconds:item.restSeconds,tempo:item.tempo,category:item.category,primaryMuscles:item.primaryMuscles,secondaryMuscles:item.secondaryMuscles}));
-export const exercises:Exercise[]=[
- ex('bench','Wyciskanie sztangi leżąc','Barbell Bench Press',['Klatka','Ramiona'],'Sztanga, ławka'),
- ex('incline-db','Wyciskanie hantli na skosie','Incline Dumbbell Press',['Klatka','Barki'],'Hantle, ławka'),
- ex('flat-db','Wyciskanie hantli na ławce poziomej','Flat Dumbbell Press',['Klatka','Ramiona'],'Hantle, ławka'),
- ex('weighted-dips','Dipy z obciążeniem','Weighted Dips',['Klatka','Ramiona'],'Poręcze, pas z obciążeniem'),
- ex('cable-fly','Rozpiętki na bramie','Cable Fly',['Klatka'],'Brama',undefined,[],'/images/exercises/cable-fly.webp'),
+const cablePressExercises:Exercise[]=[
+ {id:'standing-cable-chest-press',namePl:'Wyciskanie na linkach – klatka pozioma',nameEn:'Standing Cable Chest Press',muscles:['Klatka','Barki','Ramiona'],equipment:'Brama, para uchwytów pojedynczych',...exerciseTechnique['standing-cable-chest-press'],sets:3,repRange:{min:10,max:15},targetRir:'1–2',restSeconds:90,tempo:'3-0-1-1',category:'Compound',primaryMuscles:['klatka piersiowa'],secondaryMuscles:['przedni akton barków','triceps']},
+ {id:'standing-cable-dip-press',namePl:'Wyciskanie na linkach stojąc – styl dipów',nameEn:'Standing Cable Dip Press',muscles:['Klatka','Ramiona'],equipment:'Brama, para uchwytów pojedynczych',...exerciseTechnique['standing-cable-dip-press'],sets:3,repRange:{min:10,max:15},targetRir:'1–2',restSeconds:90,tempo:'3-0-1-1',category:'Compound',primaryMuscles:['dolna część klatki piersiowej'],secondaryMuscles:['triceps']}
+];
+const builtInExercises:Exercise[]=[
+ ex('bench','Wyciskanie sztangi leżąc','Barbell Bench Press',['Klatka','Ramiona'],'Sztanga, ławka pozioma ze stojakami'),
+ ex('incline-db','Wyciskanie hantli na skosie','Incline Dumbbell Press',['Klatka','Barki'],'Hantle, ławka regulowana'),
+ ex('flat-db','Wyciskanie hantli na ławce poziomej','Flat Dumbbell Press',['Klatka','Ramiona'],'Hantle, ławka pozioma'),
+ ex('weighted-dips','Dipy z obciążeniem','Weighted Dips',['Klatka','Ramiona'],'Poręcze do dipów, pas z obciążeniem'),
+ ex('cable-fly','Rozpiętki na bramie','Cable Fly',['Klatka'],'Brama, para uchwytów pojedynczych',undefined,[],'/images/exercises/cable-fly.webp'),
  ex('single-arm-standing-cable-press','Jednorącz wyciskanie linki stojąc','Single-Arm Standing Cable Press',['Klatka','Ramiona'],'Brama, uchwyt pojedynczy'),
- ex('chest-press','Wyciskanie na maszynie','Machine Chest Press',['Klatka','Ramiona'],'Maszyna'),
- ex('low-high','Rozpiętki z dołu','Low-to-High Cable Fly',['Klatka'],'Brama'),
- ex('pec-deck','Butterfly','Pec Deck Fly',['Klatka'],'Maszyna'),
+ ex('chest-press','Wyciskanie na maszynie','Machine Chest Press',['Klatka','Ramiona'],'Maszyna chest press'),
+ ex('low-high','Rozpiętki z dołu','Low-to-High Cable Fly',['Klatka'],'Brama, para uchwytów pojedynczych'),
+ ex('pec-deck','Butterfly','Pec Deck Fly',['Klatka'],'Maszyna pec deck'),
  ex('pushup','Pompki','Push-Up',['Klatka','Ramiona'],'Masa ciała'),
- ex('arnold','Wyciskanie Arnolda','Arnold Press',['Barki'],'Hantle',undefined,['db-shoulder-press','machine-shoulder-press']),
- ex('seated-lateral','Wznosy bokiem siedząc','Seated Dumbbell Lateral Raise',['Barki'],'Hantle',undefined,['db-lateral','cable-lateral','machine-lateral']),
- ex('rear-delt','Jednorącz odwodzenie na tył barku','One-Arm Cable Rear Delt Fly',['Barki'],'Brama',undefined,['reverse-pec','face-pull']),
- ex('front-raise','Jednorącz wznos linki przodem','Single-Arm Cable Front Raise',['Barki'],'Brama','Prowadź rękę lekko po skosie na zewnątrz, aby lepiej poczuć przedni akton barku'),
- ex('machine-lateral','Wznosy bokiem na maszynie','Machine Lateral Raise',['Barki'],'Maszyna',undefined,['cable-lateral','db-lateral','seated-lateral']),
+ ex('arnold','Wyciskanie Arnolda','Arnold Press',['Barki'],'Hantle, ławka regulowana',undefined,['db-shoulder-press','machine-shoulder-press']),
+ ex('seated-lateral','Wznosy bokiem siedząc','Seated Dumbbell Lateral Raise',['Barki'],'Hantle, ławka regulowana',undefined,['db-lateral','cable-lateral','machine-lateral']),
+ ex('rear-delt','Jednorącz odwodzenie na tył barku','One-Arm Cable Rear Delt Fly',['Barki'],'Brama, uchwyt pojedynczy',undefined,['reverse-pec','face-pull']),
+ ex('front-raise','Jednorącz wznos linki przodem','Single-Arm Cable Front Raise',['Barki'],'Wyciąg dolny, uchwyt pojedynczy','Prowadź rękę lekko po skosie na zewnątrz, aby lepiej poczuć przedni akton barku'),
+ ex('machine-lateral','Wznosy bokiem na maszynie','Machine Lateral Raise',['Barki'],'Maszyna lateral raise',undefined,['cable-lateral','db-lateral','seated-lateral']),
  ex('lateral-finisher','Finisher wznosów bokiem','Lateral Raise Finisher',['Barki'],'Hantle'),
- ex('db-shoulder-press','Wyciskanie hantli siedząc','Seated Dumbbell Shoulder Press',['Barki','Ramiona'],'Hantle, ławka',undefined,['machine-shoulder-press','arnold']),
- ex('machine-shoulder-press','Wyciskanie barkowe na maszynie','Machine Shoulder Press',['Barki','Ramiona'],'Maszyna',undefined,['db-shoulder-press','arnold']),
+ ex('db-shoulder-press','Wyciskanie hantli siedząc','Seated Dumbbell Shoulder Press',['Barki','Ramiona'],'Hantle, ławka regulowana',undefined,['machine-shoulder-press','arnold']),
+ ex('machine-shoulder-press','Wyciskanie barkowe na maszynie','Machine Shoulder Press',['Barki','Ramiona'],'Maszyna shoulder press',undefined,['db-shoulder-press','arnold']),
  ex('db-lateral','Wznosy hantli bokiem','Dumbbell Lateral Raise',['Barki'],'Hantle',undefined,['cable-lateral','machine-lateral','seated-lateral']),
- ex('reverse-pec','Odwrotne rozpiętki na maszynie','Reverse Pec Deck',['Barki','Plecy'],'Maszyna',undefined,['rear-delt','face-pull']),
- ex('cable-lateral','Wznosy bokiem na wyciągu','Cable Lateral Raise',['Barki'],'Brama',undefined,['machine-lateral','db-lateral','seated-lateral']),
- ex('neutral-pulldown','Ściąganie drążka chwytem neutralnym','Neutral-Grip Lat Pulldown',['Plecy'],'Wyciąg górny'),
- ex('onearm-pulldown','Ściąganie wyciągu jednorącz','One-Arm Lat Pulldown',['Plecy'],'Wyciąg górny'),
- ex('seated-row','Wiosłowanie siedząc na wyciągu','Seated Cable Row',['Plecy','Ramiona'],'Wyciąg dolny'),
- ex('straightarm','Ściąganie prostych ramion','Straight-Arm Pulldown',['Plecy'],'Brama'),
- ex('face-pull','Przyciąganie liny do twarzy','Face Pull',['Plecy','Barki'],'Brama',undefined,['rear-delt','reverse-pec']),
- ex('hammer-row','Wiosłowanie Hammer Strength jednorącz','One-Arm Hammer Strength Row',['Plecy','Ramiona'],'Maszyna Hammer Strength'),
- ex('wide-pulldown','Ściąganie drążka szerokim chwytem','Wide-Grip Pulldown',['Plecy'],'Wyciąg górny'),
+ ex('reverse-pec','Odwrotne rozpiętki na maszynie','Reverse Pec Deck',['Barki','Plecy'],'Maszyna reverse pec deck',undefined,['rear-delt','face-pull']),
+ ex('cable-lateral','Wznosy bokiem na wyciągu','Cable Lateral Raise',['Barki'],'Wyciąg dolny, uchwyt pojedynczy',undefined,['machine-lateral','db-lateral','seated-lateral']),
+ ex('neutral-pulldown','Ściąganie drążka chwytem neutralnym','Neutral-Grip Lat Pulldown',['Plecy'],'Wyciąg górny, uchwyt neutralny'),
+ ex('onearm-pulldown','Ściąganie wyciągu jednorącz','One-Arm Lat Pulldown',['Plecy'],'Wyciąg górny, uchwyt pojedynczy'),
+ ex('seated-row','Wiosłowanie siedząc na wyciągu','Seated Cable Row',['Plecy','Ramiona'],'Wyciąg dolny, uchwyt do wiosłowania'),
+ ex('straightarm','Ściąganie prostych ramion','Straight-Arm Pulldown',['Plecy'],'Wyciąg górny, drążek prosty lub lina'),
+ ex('face-pull','Przyciąganie liny do twarzy','Face Pull',['Plecy','Barki'],'Wyciąg górny, lina',undefined,['rear-delt','reverse-pec']),
+ ex('hammer-row','Wiosłowanie Hammer Strength jednorącz','One-Arm Hammer Strength Row',['Plecy','Ramiona'],'Maszyna Hammer Strength Row'),
+ ex('wide-pulldown','Ściąganie drążka szerokim chwytem','Wide-Grip Pulldown',['Plecy'],'Wyciąg górny, drążek szeroki'),
  ex('shrugs','Szrugsy','Shrugs',['Plecy'],'Hantle lub sztanga'),
  ex('back-extension','Prostowanie grzbietu','Back Extension',['Plecy','Nogi'],'Ławka rzymska'),
- ex('incline-curl','Uginanie hantli na ławce skośnej','Incline Dumbbell Curl',['Ramiona'],'Hantle, ławka'),
- ex('cable-curl','Uginanie ramion na wyciągu','Cable Curl',['Ramiona'],'Wyciąg'),
+ ex('incline-curl','Uginanie hantli na ławce skośnej','Incline Dumbbell Curl',['Ramiona'],'Hantle, ławka regulowana'),
+ ex('cable-curl','Uginanie ramion na wyciągu','Cable Curl',['Ramiona'],'Wyciąg dolny, gryf prosty lub gryf łamany'),
  ex('hammer-curl','Uginanie młotkowe','Hammer Curl',['Ramiona'],'Hantle'),
- ex('rope-pushdown','Prostowanie ramion z liną','Rope Pushdown',['Ramiona'],'Wyciąg',undefined,[],'/images/exercises/rope-pushdown.webp'),
- ex('overhead-triceps','Wyprost tricepsa nad głową','Overhead Cable Triceps Extension',['Ramiona'],'Wyciąg'),
+ ex('rope-pushdown','Prostowanie ramion z liną','Rope Pushdown',['Ramiona'],'Wyciąg górny, lina',undefined,[],'/images/exercises/rope-pushdown.webp'),
+ ex('overhead-triceps','Wyprost tricepsa nad głową','Overhead Cable Triceps Extension',['Ramiona'],'Wyciąg dolny, lina'),
  ex('arm-finisher','Finisher ramion','Arm Finisher',['Ramiona'],'Hantle lub wyciąg'),
  ex('walk','Spacer','Walk',['Regeneracja'],'Bez sprzętu'),
  ex('shoulder-mobility','Lekka mobilizacja obręczy barkowej','Light Shoulder-Girdle Mobility',['Regeneracja','Barki'],'Guma opcjonalnie'),
  ex('stretching','Łagodne rozciąganie','Gentle Stretching',['Regeneracja'],'Mata'),
  ex('sleep-hydration','Sen i nawodnienie','Sleep and Hydration',['Regeneracja'],'Bez sprzętu'),
+ ...cablePressExercises,
  ...chestBExercises,
  ...chestCExercises
 ];
+export const exercises:Exercise[]=builtInExercises.map(applyCuratedExerciseModel);
 export const templates:TrainingTemplate[]=[
  {id:'chest-a',name:'KLATKA A – SIŁA + GĘSTOŚĆ',focus:'Klatka',variant:'A',description:'Maksymalna hipertrofia · siła · grubość mięśni',exerciseIds:['incline-db','flat-db','weighted-dips','incline-hammer-strength-press','chest-squeeze-isometric'],prescriptions:{'incline-db':{sets:4,repRange:{min:6,max:10},targetRir:'1–2',restSeconds:150},'flat-db':{sets:3,repRange:{min:6,max:10},targetRir:'1–2',restSeconds:150},'weighted-dips':{sets:3,repRange:{min:6,max:10},targetRir:'1–2',restSeconds:150},'incline-hammer-strength-press':{sets:3,repRange:{min:8,max:12},targetRir:'1–2',restSeconds:135},'chest-squeeze-isometric':{sets:3,repRange:{min:30,max:60},repUnit:'sekundy',targetRir:'1–2',restSeconds:60}}},
- {id:chestBSource.plan.id,name:chestBSource.plan.name,nameEn:chestBSource.plan.nameEn,focus:'Klatka',variant:'B',description:chestBSource.plan.goal,goal:chestBSource.plan.goal,notes:chestBSource.plan.notes,estimatedDurationMin:chestBSource.plan.estimatedDurationMin,sourceSchemaVersion:chestBSource.schemaVersion,exerciseIds:chestBSource.plan.exercises.sort((a,b)=>a.order-b.order).map(item=>item.id)},
+ {id:chestBSource.plan.id,name:chestBSource.plan.name,nameEn:chestBSource.plan.nameEn,focus:'Klatka',variant:'B',description:chestBSource.plan.goal,goal:chestBSource.plan.goal,notes:chestBSource.plan.notes,estimatedDurationMin:chestBSource.plan.estimatedDurationMin,sourceSchemaVersion:chestBSource.schemaVersion,exerciseIds:[...chestBSource.plan.exercises].sort((a,b)=>a.order-b.order).map(item=>item.id).filter(id=>id!=='push-up-finisher').concat('standing-cable-chest-press'),prescriptions:{'standing-cable-chest-press':{sets:2,repRange:{min:15,max:20},targetRir:'0–1 w ostatniej serii',restSeconds:45,tempo:'2-0-1-2',note:'Finisher: po ostatniej serii zmniejsz ciężar o 25–30% i wykonaj jeszcze 8–12 kontrolowanych powtórzeń.'}}},
  {id:chestCSource.plan.id,name:chestCSource.plan.name,nameEn:chestCSource.plan.nameEn,focus:'Klatka',variant:'C',description:chestCSource.plan.goal,goal:chestCSource.plan.goal,notes:chestCSource.plan.notes,estimatedDurationMin:chestCSource.plan.estimatedDurationMin,sourceSchemaVersion:chestCSource.schemaVersion,exerciseIds:[...chestCSource.plan.exercises].sort((a,b)=>a.order-b.order).map(item=>item.id)},
- {id:'chest-d',name:'KLATKA D – FINAL (Kodex v2)',focus:'Klatka',variant:'D',description:'Pełne rozciągnięcie · maksymalne napięcie · pompa · hipertrofia',goal:'Pełne rozciągnięcie włókien, maksymalne napięcie, pompa i hipertrofia bez dublowania ciężkiego charakteru treningów A–C.',exerciseIds:['high-to-low-cable-crossover','single-arm-standing-cable-press','chest-press','low-to-high-cable-fly','pushup','chest-squeeze-isometric'],prescriptions:{'high-to-low-cable-crossover':{sets:4,repRange:{min:12,max:15},targetRir:'1–2',restSeconds:60,note:'Pre-exhaust: szeroki łuk, pełne rozciągnięcie i stałe napięcie.'},'single-arm-standing-cable-press':{sets:3,repRange:{min:10,max:12},repUnit:'na stronę',targetRir:'1',restSeconds:75,note:'Wykonaj 10–12 powtórzeń na każdą stronę. Nie obracaj tułowia.'},'chest-press':{sets:4,repRange:{min:8,max:12},targetRir:'0–1',restSeconds:90,tempo:'3-0-1-1',note:'Ostatnia seria: drop set — zmniejsz ciężar o 40–50% i wykonaj do pełnego upadku mięśniowego.'},'low-to-high-cable-fly':{sets:3,repRange:{min:12,max:15},targetRir:'0–1',restSeconds:60,tempo:'3-0-1-2',note:'Na końcu każdego powtórzenia utrzymaj szczytowe napięcie przez 1–2 sekundy.'},pushup:{sets:3,repUnit:'do upadku',targetRir:'0',restSeconds:60,tempo:'3-0-1-0',note:'Każda seria do technicznego upadku. Jeśli przekraczasz 20 powtórzeń, dodaj obciążenie.'},'chest-squeeze-isometric':{sets:3,repRange:{min:30,max:40},repUnit:'sekundy',targetRir:'0–1',restSeconds:30,note:'Maksymalnie ściskaj dłonie lub piłkę przed klatką przez cały czas.'}},notes:['Po ćwiczeniach 3–6 utrzymuj około 3 sekundy fazy ekscentrycznej.','Mocno zatrzymuj ruch w szczytowym napięciu.','Ostatnią serię każdego ćwiczenia wykonuj praktycznie do upadku: RIR 0–1.']},
+ {id:'chest-d',name:'KLATKA D – FINAL (Kodex v2)',focus:'Klatka',variant:'D',description:'Pełne rozciągnięcie · maksymalne napięcie · pompa · hipertrofia',goal:'Pełne rozciągnięcie włókien, maksymalne napięcie, pompa i hipertrofia bez dublowania ciężkiego charakteru treningów A–C.',exerciseIds:['high-to-low-cable-crossover','single-arm-standing-cable-press','chest-press','low-to-high-cable-fly','standing-cable-dip-press','chest-squeeze-isometric'],prescriptions:{'high-to-low-cable-crossover':{sets:3,repRange:{min:12,max:15},targetRir:'1–2',restSeconds:60,note:'Pre-exhaust: szeroki łuk, pełne rozciągnięcie i stałe napięcie.'},'single-arm-standing-cable-press':{sets:3,repRange:{min:10,max:12},repUnit:'na stronę',targetRir:'1',restSeconds:75,note:'Wykonaj 10–12 powtórzeń na każdą stronę. Nie obracaj tułowia.'},'chest-press':{sets:3,repRange:{min:8,max:12},targetRir:'0–1',restSeconds:90,tempo:'3-0-1-1',note:'Ostatnia seria: drop set — zmniejsz ciężar o 40–50% i wykonaj do pełnego upadku mięśniowego.'},'low-to-high-cable-fly':{sets:3,repRange:{min:12,max:15},targetRir:'0–1',restSeconds:60,tempo:'3-0-1-2',note:'Na końcu każdego powtórzenia utrzymaj szczytowe napięcie przez 1–2 sekundy.'},'standing-cable-dip-press':{sets:2,repRange:{min:15,max:20},targetRir:'0–1 w ostatniej serii',restSeconds:45,tempo:'2-0-1-2',note:'Finisher: ustaw linki wysoko i blisko siebie. Po ostatniej serii zmniejsz ciężar o 25–30% i wykonaj jeszcze 8–12 kontrolowanych powtórzeń.'},'chest-squeeze-isometric':{sets:2,repRange:{min:30,max:40},repUnit:'sekundy',targetRir:'0–1',restSeconds:30,note:'Maksymalnie ściskaj dłonie lub piłkę przed klatką przez cały czas.'}},notes:['Po ćwiczeniach 3–6 utrzymuj około 3 sekundy fazy ekscentrycznej.','Mocno zatrzymuj ruch w szczytowym napięciu.','Ostatnią serię każdego ćwiczenia wykonuj praktycznie do upadku: RIR 0–1.']},
  {id:'shoulders-a',name:'BARKI A – CIĘŻAR I MASA',focus:'Barki',variant:'A',description:'Ciężkie wyciskanie · siła i masa całych barków',goal:'Progresja siłowa w wyciskaniu i ciężka hipertrofia barków po pełnej regeneracji.',exerciseIds:['db-shoulder-press','machine-shoulder-press','db-lateral','reverse-pec','cable-lateral'],prescriptions:{'db-shoulder-press':{sets:4,repRange:{min:6,max:8},targetRir:'1–2',restSeconds:150},'machine-shoulder-press':{sets:3,repRange:{min:8,max:10},targetRir:'1–2',restSeconds:120},'db-lateral':{sets:3,repRange:{min:8,max:12},targetRir:'1–2',restSeconds:75},'reverse-pec':{sets:3,repRange:{min:10,max:15},targetRir:'1–2',restSeconds:75},'cable-lateral':{sets:2,repRange:{min:12,max:15},targetRir:'1',restSeconds:60}}},
  {id:'shoulders-b',name:'BARKI B – BOCZNY + TYLNY AKTON',focus:'Barki',variant:'B',description:'Objętość bocznego i tylnego aktonu · bez wyciskania',goal:'Duża objętość bocznego i tylnego aktonu bez dokładania kolejnego ciężkiego wyciskania po treningach klatki.',exerciseIds:['cable-lateral','seated-lateral','rear-delt','reverse-pec','face-pull','lateral-finisher'],prescriptions:{'cable-lateral':{sets:3,repRange:{min:12,max:16},targetRir:'1–2',restSeconds:60},'seated-lateral':{sets:3,repRange:{min:15,max:20},targetRir:'1–2',restSeconds:60},'rear-delt':{sets:3,repRange:{min:12,max:20},targetRir:'1–2',restSeconds:60},'reverse-pec':{sets:3,repRange:{min:15,max:20},targetRir:'1–2',restSeconds:60},'face-pull':{sets:2,repRange:{min:15,max:20},targetRir:'2',restSeconds:60},'lateral-finisher':{sets:2,repRange:{min:20,max:30},targetRir:'0–1',restSeconds:45,note:'Ostatnia seria może być drop setem; zatrzymaj technikę przed utratą kontroli.'}}},
  {id:'back-a',name:'PLECY A',focus:'Plecy',variant:'A',description:'Szerokość grzbietu',exerciseIds:['neutral-pulldown','onearm-pulldown','seated-row','straightarm','face-pull']},

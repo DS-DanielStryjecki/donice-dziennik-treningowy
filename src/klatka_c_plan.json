@@ -32,7 +32,7 @@
         "nameEn": "Incline Hammer Strength Press",
         "category": "compound",
         "equipment": [
-          "maszyna Hammer Strength / converging press"
+          "maszyna Hammer Strength lub maszyna converging press"
         ],
         "primaryMuscles": [
           "górna część klatki piersiowej"
@@ -75,7 +75,7 @@
         "category": "isolation",
         "equipment": [
           "brama",
-          "uchwyty pojedyncze"
+          "para uchwytów pojedynczych"
         ],
         "primaryMuscles": [
           "górna część klatki piersiowej"
@@ -112,12 +112,12 @@
       {
         "order": 3,
         "id": "incline-cable-press",
-        "namePl": "Wyciskanie na linkach skos dodatni",
-        "nameEn": "Incline Cable Press",
+        "namePl": "Wyciskanie na linkach z dołu (góra klatki)",
+        "nameEn": "Incline Cable Chest Press",
         "category": "compound",
         "equipment": [
           "brama",
-          "uchwyty pojedyncze",
+          "para uchwytów pojedynczych",
           "ławka regulowana"
         ],
         "primaryMuscles": [
@@ -203,7 +203,7 @@
         "category": "finisher",
         "equipment": [
           "masa ciała",
-          "uchwyty / hantle / podwyższenie"
+          "uchwyty do pompek lub hantle lub stabilne podwyższenie"
         ],
         "primaryMuscles": [
           "klatka piersiowa"
@@ -245,8 +245,7 @@
         "nameEn": "Chest Squeeze Isometric",
         "category": "finisher",
         "equipment": [
-          "talerz",
-          "hantel lub brak sprzętu"
+          "talerz lub hantel lub brak sprzętu"
         ],
         "primaryMuscles": [
           "klatka piersiowa"
