@@ -362,5 +362,19 @@
     "imageUrl": "/images/exercises/single-arm-standing-cable-press.webp",
     "thumbnailUrl": "/images/exercises/single-arm-standing-cable-press-thumb.webp",
     "status": "generated"
+  },
+  {
+    "exerciseId": "standing-cable-chest-press",
+    "namePl": "Wyciskanie na linkach – klatka pozioma",
+    "imageUrl": "/images/exercises/standing-cable-chest-press.webp",
+    "thumbnailUrl": "/images/exercises/standing-cable-chest-press-thumb.webp",
+    "status": "generated"
+  },
+  {
+    "exerciseId": "standing-cable-dip-press",
+    "namePl": "Wyciskanie na linkach stojąc – styl dipów",
+    "imageUrl": "/images/exercises/standing-cable-dip-press.webp",
+    "thumbnailUrl": "/images/exercises/standing-cable-dip-press-thumb.webp",
+    "status": "generated"
   }
 ]
